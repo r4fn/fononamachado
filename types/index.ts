@@ -9,14 +9,24 @@ export interface NavLink {
 
 // ─── Sections ────────────────────────────────────────────────────────────────
 
+export type InfoCardIconKey = "weekly" | "biweekly" | "home" | "session";
+
 export interface InfoCard {
-  icon: string;
+  iconKey: InfoCardIconKey;
   title: string;
   description: string;
 }
 
+export type AreaCardIconKey =
+  | "childLanguage"
+  | "adultLanguage"
+  | "oro"
+  | "dysphagia"
+  | "assessment"
+  | "family";
+
 export interface AreaCard {
-  icon: string;
+  iconKey: AreaCardIconKey;
   title: string;
   description: string;
 }

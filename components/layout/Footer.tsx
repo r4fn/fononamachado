@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FooterGoldDecor from "@/components/layout/FooterGoldDecor";
 import SiteContainer from "@/components/layout/SiteContainer";
 import Logo from "@/components/ui/Logo";
 import { INSTAGRAM_URL } from "@/lib/constants";
@@ -14,11 +15,12 @@ export default function Footer() {
   return (
     <footer
       className={cn(
-        "border-t border-forest/10 bg-cream-alt/90 py-12 backdrop-blur-md supports-[backdrop-filter]:bg-cream-alt/75",
+        "relative overflow-hidden border-t border-forest/10 bg-cream-alt/90 py-12 backdrop-blur-md supports-[backdrop-filter]:bg-cream-alt/75",
         siteEdgePadding,
       )}
     >
-      <SiteContainer>
+      <FooterGoldDecor />
+      <SiteContainer className="relative z-10">
         <div className="flex flex-col items-center gap-10 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
           {/* Logo maior — bloco com “respiro” para parecer mais editorial */}
           <div className="flex shrink-0 flex-col items-center sm:items-start">

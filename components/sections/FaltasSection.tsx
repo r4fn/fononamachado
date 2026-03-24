@@ -1,8 +1,9 @@
-import Link from "next/link";
 import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GoldRule from "@/components/ui/GoldRule";
+import Button from "@/components/ui/Button";
 import { siteEdgePadding } from "@/lib/siteLayout";
+import { cn } from "@/lib/utils";
 import type { FaltaItem } from "@/types";
 
 const FALTAS: FaltaItem[] = [
@@ -34,15 +35,15 @@ const FALTAS: FaltaItem[] = [
 
 const DocumentIcon = () => (
   <svg
-    width="16"
-    height="16"
+    width="18"
+    height="18"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
+    strokeWidth="1.75"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-hidden="true"
+    aria-hidden
   >
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
     <polyline points="14,2 14,8 20,8" />
@@ -56,55 +57,70 @@ export default function FaltasSection() {
     <section
       id="faltas"
       aria-labelledby="faltas-titulo"
-      className={`bg-cream-alt py-24 ${siteEdgePadding}`}
+      className={cn("bg-cream-alt py-24 lg:py-28", siteEdgePadding)}
     >
-      <SiteContainer className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
-      {/* Policy list */}
-      <div>
-        <SectionLabel>Organização</SectionLabel>
-        <h2
-          id="faltas-titulo"
-          className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink"
-        >
-          Faltas e <span className="text-forest italic">Reposições</span>
-        </h2>
-        <GoldRule />
-        <ul className="list-none mt-7 space-y-0">
-          {FALTAS.map((falta) => (
-            <li
-              key={falta.number}
-              className="flex gap-4 py-3.5 border-b border-forest/10 last:border-b-0 text-[0.88rem] font-light leading-[1.65] text-ink-soft"
-            >
-              <span className="flex-shrink-0 mt-0.5 w-7 h-7 bg-forest text-white rounded-full flex items-center justify-center text-[0.68rem] font-semibold">
-                {falta.number}
-              </span>
-              <span>{falta.text}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <SiteContainer className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <SectionLabel>Organização</SectionLabel>
+          <h2
+            id="faltas-titulo"
+            className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink"
+          >
+            Faltas e <span className="text-forest italic">Reposições</span>
+          </h2>
+          <GoldRule />
+          <ul className="mt-8 list-none space-y-3" role="list">
+            {FALTAS.map((falta) => (
+              <li key={falta.number} role="listitem">
+                <div
+                  className={cn(
+                    "flex gap-4 rounded-2xl border border-forest/10 bg-white/90 px-4 py-4 shadow-card",
+                    "transition-all duration-200 hover:border-sage/35 hover:shadow-md",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "flex h-10 min-w-[2.5rem] shrink-0 items-center justify-center rounded-xl",
+                      "bg-forest text-[0.75rem] font-semibold tabular-nums text-white",
+                    )}
+                    aria-hidden
+                  >
+                    {falta.number}
+                  </span>
+                  <p className="text-[0.9rem] font-light leading-[1.7] text-ink-soft">
+                    {falta.text}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Terms box */}
-      <div className="bg-white border border-forest/10 rounded-[20px] p-9 text-center shadow-card self-start">
-        <SectionLabel>Documentação</SectionLabel>
-        <h3 className="font-serif text-[1.8rem] font-light leading-[1.15] text-ink mb-4">
-          Termos de <span className="text-forest italic">Atendimento</span>
-        </h3>
-        <p className="text-[0.9rem] font-light leading-[1.75] text-ink-muted mb-6">
-          Antes de iniciar o acompanhamento terapêutico, os responsáveis ou
-          pacientes tomam ciência e concordam com os termos e condições do
-          atendimento fonoaudiológico.
-        </p>
-        <Link
-          href="/termo"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2.5 bg-forest text-white rounded-pill px-6 py-3 text-[0.8rem] font-medium tracking-wide uppercase transition-all duration-250 hover:bg-forest-light hover:-translate-y-0.5 hover:shadow-md"
+        <aside
+          className={cn(
+            "self-start rounded-2xl border border-forest/10 bg-white p-8 text-center shadow-card",
+            "lg:sticky lg:top-[calc(72px+1.5rem)]",
+          )}
+          aria-labelledby="faltas-termos-titulo"
         >
-          <DocumentIcon />
-          Ler Termos de Atendimento
-        </Link>
-      </div>
+          <SectionLabel>Documentação</SectionLabel>
+          <h3
+            id="faltas-termos-titulo"
+            className="mb-3 font-serif text-[clamp(1.5rem,3vw,1.85rem)] font-light leading-tight text-ink"
+          >
+            Termos de <span className="text-forest italic">atendimento</span>
+          </h3>
+          <GoldRule className="mx-auto my-5" />
+          <p className="mb-8 text-[0.9rem] font-light leading-[1.75] text-ink-muted">
+            Antes de iniciar o acompanhamento terapêutico, responsáveis ou
+            pacientes tomam ciência e concordam com os termos e condições do
+            atendimento fonoaudiológico.
+          </p>
+          <Button as="link" href="/termo" variant="forest" className="w-full sm:w-auto">
+            <DocumentIcon />
+            Ler termos completos
+          </Button>
+        </aside>
       </SiteContainer>
     </section>
   );
