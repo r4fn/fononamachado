@@ -53,7 +53,7 @@ function ContatoIcon({
   /** Sobrescreve cor (ex.: botão secundário no fundo escuro) */
   className?: string;
 }) {
-  const shared = cn("h-5 w-5 shrink-0 text-sage-light", iconStroke, className);
+  const shared = cn("h-5 w-5 shrink-0 text-forest", iconStroke, className);
   switch (kind) {
     case "map":
       return (
@@ -138,7 +138,7 @@ export default function LocalizacaoSection() {
       id="localizacao"
       aria-labelledby="localizacao-titulo"
       className={cn(
-        "relative overflow-hidden bg-forest py-20 lg:py-28",
+        "relative overflow-hidden bg-[#8FAA8A] py-20 lg:py-28",
         siteEdgePadding,
       )}
     >
@@ -175,26 +175,26 @@ export default function LocalizacaoSection() {
                   target={item.isExternal ? "_blank" : undefined}
                   rel={item.isExternal ? "noopener noreferrer" : undefined}
                   className={cn(
-                    "group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-4 py-3.5",
+                    "group flex items-center gap-4 rounded-2xl border border-white/30 bg-white/20 px-4 py-3.5 backdrop-blur-sm",
                     "transition-all duration-200",
-                    "hover:border-white/[0.14] hover:bg-white/[0.07] hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)]",
+                    "hover:border-white/45 hover:bg-white/30 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)]",
                     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-honey-light/80",
                   )}
                 >
                   <span
                     className={cn(
                       "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-                      "border border-white/10 bg-white/[0.06] text-sage-light",
-                      "transition-colors duration-200 group-hover:border-white/18 group-hover:bg-white/[0.1]",
+                      "border border-white/30 bg-white/25 text-forest",
+                      "transition-colors duration-200 group-hover:border-white/45 group-hover:bg-white/35",
                     )}
                   >
                     <ContatoIcon kind={item.kind} />
                   </span>
-                  <span className="min-w-0 flex-1 text-[0.9375rem] font-light leading-snug text-white/85 group-hover:text-white">
+                  <span className="min-w-0 flex-1 text-[0.9375rem] font-light leading-snug text-white/90 group-hover:text-white">
                     <span className="whitespace-pre-line">{item.label}</span>
                   </span>
                   <span
-                    className="hidden shrink-0 text-white/35 transition-colors group-hover:text-honey-light sm:block"
+                    className="hidden shrink-0 text-forest/40 transition-colors group-hover:text-forest sm:block"
                     aria-hidden="true"
                   >
                     <svg
