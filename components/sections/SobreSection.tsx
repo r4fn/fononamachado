@@ -16,22 +16,10 @@ const INFO_CARDS: InfoCard[] = [
       "Preferencialmente semanal — a constância é essencial para o processo terapêutico. Você tem um horário exclusivo reservado na agenda.",
   },
   {
-    iconKey: "biweekly",
-    title: "Atendimento quinzenal",
-    description:
-      "Disponível em situações específicas, sem reserva de horário fixo. Pagamento por sessão individual.",
-  },
-  {
     iconKey: "home",
     title: "Atendimento domiciliar",
     description:
-      "Disponível para disfagia e linguagem. Mesmo valor do consultório para disfagia (R$ 150). Acréscimo de deslocamento para outra cidade.",
-  },
-  {
-    iconKey: "session",
-    title: "Duração da sessão",
-    description:
-      "45 minutos por sessão. O valor se aplica a todas as consultas: anamnese, avaliação e acompanhamento.",
+      "Para pacientes impossibilitados de se deslocar ao consultório, o atendimento pode ser realizado em domicílio, tanto para linguagem quanto para disfagia.",
   },
 ];
 
@@ -54,10 +42,7 @@ function InfoCardView({
       )}
     >
       <div
-        className={cn(
-          "flex min-h-0",
-          m ? "flex-1 gap-3" : "gap-3 sm:gap-4",
-        )}
+        className={cn("flex min-h-0", m ? "flex-1 gap-3" : "gap-3 sm:gap-4")}
       >
         <span
           className={cn(
@@ -85,7 +70,9 @@ function InfoCardView({
           <p
             className={cn(
               "font-light text-ink-muted [overflow-wrap:anywhere]",
-              m ? "text-[0.8125rem] leading-[1.52]" : "text-[0.84rem] leading-[1.65]",
+              m
+                ? "text-[0.8125rem] leading-[1.52]"
+                : "text-[0.84rem] leading-[1.65]",
             )}
           >
             {card.description}
@@ -103,45 +90,53 @@ export default function SobreSection() {
       aria-labelledby="sobre-titulo"
       className={cn("bg-white py-20 lg:py-28", siteEdgePadding)}
     >
-      <SiteContainer className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
-        <Reveal>
+      <SiteContainer className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start lg:gap-x-16 lg:gap-y-4 xl:gap-x-20">
+        {/* Em lg+: cabeçalho em linha própria; cards ficam na mesma linha que os parágrafos (alinhados ao texto). */}
+        <Reveal className="lg:col-span-2">
           <div>
-            <SectionLabel>Quem sou eu</SectionLabel>
+            <SectionLabel className="mb-2.5">Quem sou eu</SectionLabel>
             <h2
               id="sobre-titulo"
-              className="mb-5 font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-light leading-[1.15] text-ink lg:mb-6"
+              className="mb-4 font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-light leading-[1.15] text-ink lg:mb-4"
             >
               Sobre <span className="text-forest italic">Mim</span>
             </h2>
-            <GoldRule />
-            <p className="mb-3 font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:mb-4 sm:text-base sm:leading-[1.9]">
-              Sou Fonoaudióloga, formada pela Universidade de Sorocaba, e realizo
-              atendimentos para crianças e adultos em São Miguel Arcanjo e região.
+            <GoldRule className="my-5 lg:mb-0" />
+          </div>
+        </Reveal>
+
+        <Reveal className="lg:col-start-1 lg:row-start-2">
+          <div>
+            <p className="mb-2.5 font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:mb-3 sm:text-base sm:leading-[1.9]">
+              Sou Fonoaudióloga, formada pela Universidade de Sorocaba, e
+              realizo atendimentos para crianças e adultos presencialmente em
+              São Miguel Arcanjo, com deslocamento disponível para Pilar do Sul,
+              Itapetininga e região.
             </p>
-            <p className="mb-3 hidden font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:mb-4 sm:block sm:text-base sm:leading-[1.9]">
+            <p className="mb-2.5 hidden font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:mb-3 sm:block sm:text-base sm:leading-[1.9]">
               Meu trabalho é guiado pelo cuidado, pela escuta e pelo respeito,
-              sempre buscando oferecer um acompanhamento responsável e de qualidade
-              de acordo com as necessidades de cada pessoa.
+              sempre buscando oferecer um acompanhamento responsável e de
+              qualidade de acordo com as necessidades de cada pessoa.
             </p>
-            <p className="mb-4 font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:hidden">
+            <p className="mb-3 font-light text-[0.92rem] leading-[1.75] text-ink-muted sm:hidden">
               Trabalho com cuidado, escuta e respeito, buscando sempre um
               acompanhamento de qualidade.
             </p>
-            <div className="mt-5 rounded-2xl border border-sage/30 bg-sage-pale/80 px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] sm:mt-6 sm:px-6 sm:py-5">
+            <div className="mt-4 rounded-2xl border border-sage/30 bg-sage-pale/80 px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] sm:mt-5 sm:px-6 sm:py-5">
               <p className="text-[0.88rem] font-normal leading-[1.7] text-forest sm:hidden">
                 Atendimento individual, 45 minutos, com avaliação e plano
                 personalizado para cada paciente e família.
               </p>
               <p className="hidden font-normal leading-[1.75] text-forest sm:block sm:text-[0.92rem]">
-                O atendimento é individual, com duração de 45 minutos, baseado em
-                avaliação detalhada e plano terapêutico personalizado, respeitando
-                as necessidades de cada paciente e família.
+                O atendimento é individual, baseado em avaliação detalhada e
+                plano terapêutico personalizado, respeitando as necessidades de
+                cada paciente e família.
               </p>
             </div>
           </div>
         </Reveal>
 
-        <Reveal className="lg:hidden" delay={0.08}>
+        <Reveal className="md:hidden" delay={0.08}>
           <MobileCardCarousel
             variant="sobre"
             ariaLabel="Informações sobre modalidades de atendimento"
@@ -151,12 +146,21 @@ export default function SobreSection() {
           />
         </Reveal>
 
-        <StaggerList
-          as="div"
-          className="hidden flex-col gap-3 lg:flex"
+        <Reveal
+          className="hidden w-full md:grid md:grid-cols-2 md:gap-3 lg:hidden"
+          delay={0.08}
         >
           {INFO_CARDS.map((card) => (
-            <StaggerItem as="div" key={card.title}>
+            <InfoCardView key={card.title} card={card} />
+          ))}
+        </Reveal>
+
+        <StaggerList
+          as="div"
+          className="hidden w-full flex-col gap-4 self-start lg:col-start-2 lg:row-start-2 lg:flex"
+        >
+          {INFO_CARDS.map((card) => (
+            <StaggerItem as="div" key={card.title} className="w-full self-start">
               <InfoCardView card={card} />
             </StaggerItem>
           ))}

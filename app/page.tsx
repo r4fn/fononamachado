@@ -14,7 +14,7 @@ export default function HomePage() {
       <AnimatedDivider />
       <AreasSection />
       <AnimatedDivider />
-      <FaltasSection />
+      {/* <FaltasSection /> */}
       <AnimatedDivider />
       <LocalizacaoSection />
     </>

@@ -56,6 +56,161 @@ const heroTextItem = {
   },
 };
 
+/** Fundo suave: orbes verdes que respiram + ondas organicas na base */
+function HeroAmbientBackdrop({ reduceMotion }: { reduceMotion: boolean }) {
+  const wavePaths1 = [
+    "M0,140 C180,100 360,160 540,120 C720,80 900,170 1080,130 C1200,110 1360,150 1440,125 L1440,220 L0,220 Z",
+    "M0,120 C180,160 360,100 540,150 C720,170 900,90 1080,140 C1200,155 1360,110 1440,140 L1440,220 L0,220 Z",
+    "M0,140 C180,100 360,160 540,120 C720,80 900,170 1080,130 C1200,110 1360,150 1440,125 L1440,220 L0,220 Z",
+  ];
+  const wavePaths2 = [
+    "M0,165 C240,135 480,185 720,155 C960,125 1200,180 1440,150 L1440,220 L0,220 Z",
+    "M0,155 C240,180 480,140 720,170 C960,190 1200,140 1440,165 L1440,220 L0,220 Z",
+    "M0,165 C240,135 480,185 720,155 C960,125 1200,180 1440,150 L1440,220 L0,220 Z",
+  ];
+  const wavePaths3 = [
+    "M0,185 C360,170 720,200 1080,175 C1260,165 1380,190 1440,180 L1440,220 L0,220 Z",
+    "M0,180 C360,195 720,170 1080,190 C1260,200 1380,175 1440,185 L1440,220 L0,220 Z",
+    "M0,185 C360,170 720,200 1080,175 C1260,165 1380,190 1440,180 L1440,220 L0,220 Z",
+  ];
+
+  if (reduceMotion) {
+    return (
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        {/* Orbes verdes estáticos */}
+        <div className="absolute -right-[14%] top-[4%] h-[min(55vw,440px)] w-[min(55vw,440px)] rounded-full bg-sage-light/[0.10] blur-[100px]" />
+        <div className="absolute -left-[12%] bottom-[6%] h-[min(48vw,400px)] w-[min(48vw,400px)] rounded-full bg-sage/[0.12] blur-[100px]" />
+        <div className="absolute left-[30%] top-[35%] h-[min(36vw,300px)] w-[min(36vw,300px)] rounded-full bg-forest/[0.07] blur-[100px]" />
+
+        {/* Ondas estáticas */}
+        <div className="absolute -bottom-px left-0 right-0 h-[160px] sm:h-[200px]">
+          <svg viewBox="0 0 1440 220" fill="none" className="absolute bottom-0 h-full w-full" preserveAspectRatio="none">
+            <path d={wavePaths1[0]} fill="rgba(138,158,126,0.05)" />
+            <path d={wavePaths2[0]} fill="rgba(94,114,82,0.04)" />
+            <path d={wavePaths3[0]} fill="rgba(184,201,175,0.06)" />
+          </svg>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.4, ease: EASE_OUT, delay: 0.3 }}
+    >
+      {/* Orbe 1 — sage-light, canto superior direito */}
+      <motion.div
+        className="absolute -right-[14%] top-[4%] h-[min(55vw,440px)] w-[min(55vw,440px)] rounded-full bg-gradient-to-bl from-sage-light/[0.14] via-sage/[0.06] to-transparent blur-[100px]"
+        animate={{
+          opacity: [0.65, 0.9, 0.7, 0.85, 0.65],
+          scale: [1, 1.05, 0.98, 1.03, 1],
+          x: [0, 14, -6, 10, 0],
+          y: [0, -10, 8, -4, 0],
+        }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Orbe 2 — sage, canto inferior esquerdo */}
+      <motion.div
+        className="absolute -left-[12%] bottom-[6%] h-[min(48vw,400px)] w-[min(48vw,400px)] rounded-full bg-gradient-to-tr from-sage/[0.16] via-sage-light/[0.06] to-transparent blur-[100px]"
+        animate={{
+          opacity: [0.55, 0.82, 0.6, 0.78, 0.55],
+          scale: [1, 1.04, 0.97, 1.02, 1],
+          x: [0, -10, 8, -5, 0],
+          y: [0, 12, -6, 4, 0],
+        }}
+        transition={{
+          duration: 26,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5,
+        }}
+      />
+
+      {/* Orbe 3 — forest, centro-esquerda */}
+      <motion.div
+        className="absolute left-[30%] top-[35%] h-[min(36vw,300px)] w-[min(36vw,300px)] rounded-full bg-forest/[0.09] blur-[100px]"
+        animate={{
+          opacity: [0.4, 0.65, 0.45, 0.6, 0.4],
+          scale: [1, 1.08, 1.01, 1.06, 1],
+          x: [0, -16, 10, -8, 0],
+          y: [0, 14, -8, 6, 0],
+        }}
+        transition={{
+          duration: 19,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.8,
+        }}
+      />
+
+      {/* Orbe 4 — sage-light, inferior direito (menor) */}
+      <motion.div
+        className="absolute -right-[6%] bottom-[24%] h-[min(26vw,220px)] w-[min(26vw,220px)] rounded-full bg-sage-light/[0.12] blur-[80px]"
+        animate={{
+          opacity: [0.5, 0.75, 0.52, 0.7, 0.5],
+          x: [0, -14, 8, 0],
+          y: [0, 10, -6, 0],
+        }}
+        transition={{
+          duration: 17,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 3,
+        }}
+      />
+
+      {/* Ondas animadas na base — 3 camadas, todas em tons de verde */}
+      <div className="absolute -bottom-px left-0 right-0 h-[160px] sm:h-[200px]">
+        <svg
+          viewBox="0 0 1440 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute bottom-0 h-full w-full"
+          preserveAspectRatio="none"
+        >
+          <motion.path
+            fill="rgba(138,158,126,0.05)"
+            animate={{ d: wavePaths1 }}
+            transition={{
+              duration: 14,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.path
+            fill="rgba(94,114,82,0.04)"
+            animate={{ d: wavePaths2 }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+          <motion.path
+            fill="rgba(184,201,175,0.06)"
+            animate={{ d: wavePaths3 }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+        </svg>
+      </div>
+    </motion.div>
+  );
+}
+
 function HeroBadge({ children }: { children: React.ReactNode }) {
   return (
     <span
@@ -134,46 +289,13 @@ export default function HeroSection() {
       aria-label="Apresentação"
       className={cn(
         "relative flex min-h-[calc(100dvh-72px)] bg-cream-warm",
-        /* Mobile: conteúdo começa no topo e pode crescer (evita cortar CTAs). Desktop: centraliza na viewport. */
         "max-md:items-start md:items-center",
         "overflow-x-hidden",
         "mt-[72px]",
         siteEdgePadding,
       )}
     >
-      {/* Luz ambiente — respira devagar (respeita prefers-reduced-motion) */}
-      {!reduceMotion && (
-        <div
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-          aria-hidden="true"
-        >
-          <motion.div
-            className="absolute -right-[18%] top-[8%] h-[min(62vw,480px)] w-[min(62vw,480px)] rounded-full bg-honey/[0.07] blur-3xl"
-            animate={{
-              opacity: [0.45, 0.75, 0.45],
-              scale: [1, 1.05, 1],
-            }}
-            transition={{
-              duration: 16,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute -left-[12%] bottom-[5%] h-[min(50vw,380px)] w-[min(50vw,380px)] rounded-full bg-sage/[0.09] blur-3xl"
-            animate={{
-              opacity: [0.35, 0.6, 0.35],
-              scale: [1, 1.04, 1],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          />
-        </div>
-      )}
+      <HeroAmbientBackdrop reduceMotion={reduceMotion} />
 
       <div
         className={cn(
