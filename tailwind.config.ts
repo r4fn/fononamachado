@@ -48,43 +48,11 @@ const config: Config = {
       },
       animation: {
         'fade-up': 'fadeUp 0.7s ease both',
-        /** Rodapé — charme dourado (ouros / folhas) */
-        'honey-float': 'honeyFloat 5.5s ease-in-out infinite',
-        'honey-drift': 'honeyDrift 7s ease-in-out infinite',
-        'honey-sway': 'honeySway 6s ease-in-out infinite',
       },
       keyframes: {
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
-        },
-        honeyFloat: {
-          '0%, 100%': {
-            transform: 'translateY(0) rotate(-6deg)',
-            opacity: '0.28',
-          },
-          '50%': {
-            transform: 'translateY(-10px) rotate(6deg)',
-            opacity: '0.52',
-          },
-        },
-        honeyDrift: {
-          '0%, 100%': {
-            transform: 'translate(0, 0) scale(1)',
-            opacity: '0.22',
-          },
-          '33%': {
-            transform: 'translate(8px, -6px) scale(1.06)',
-            opacity: '0.42',
-          },
-          '66%': {
-            transform: 'translate(-6px, 5px) scale(0.94)',
-            opacity: '0.3',
-          },
-        },
-        honeySway: {
-          '0%, 100%': { transform: 'rotate(-12deg) translateY(0)', opacity: '0.25' },
-          '50%': { transform: 'rotate(10deg) translateY(-6px)', opacity: '0.48' },
         },
       },
     },

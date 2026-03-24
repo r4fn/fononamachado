@@ -36,13 +36,4 @@
   .animation-delay-550 {
     animation-delay: 0.55s;
   }
-
-  /* Respeita usuários com “reduzir movimento” (acessibilidade) */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-honey-float,
-    .animate-honey-drift,
-    .animate-honey-sway {
-      animation: none !important;
-    }
-  }
 }
