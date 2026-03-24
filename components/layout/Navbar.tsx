@@ -40,14 +40,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const updateOverlap = () => {
-      const el = document.getElementById("localizacao");
-      if (!el) {
-        setOverDarkSection(false);
-        return;
-      }
-      const r = el.getBoundingClientRect();
-      const overlapsNavStrip = r.top < NAV_HEIGHT && r.bottom > 0;
-      setOverDarkSection(overlapsNavStrip);
+      const darkSections = document.querySelectorAll("[data-navbar-dark]");
+      let overlaps = false;
+      darkSections.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < NAV_HEIGHT && r.bottom > 0) overlaps = true;
+      });
+      setOverDarkSection(overlaps);
     };
 
     updateOverlap();
@@ -133,8 +132,8 @@ export default function Navbar() {
                     "rounded-pill px-3.5 py-2 text-[0.8rem] font-medium tracking-wide transition-all duration-200",
                     link.isCta
                       ? overDarkSection
-                        ? "ml-2 bg-white text-forest shadow-sm hover:bg-cream hover:text-ink"
-                        : "ml-2 bg-forest text-white hover:bg-forest-light"
+                        ? "ml-2 bg-cream text-ink shadow-sm hover:bg-white hover:text-forest"
+                        : "ml-2 bg-forest-light text-white hover:bg-forest"
                       : overDarkSection
                         ? "text-white/90 hover:bg-white/12 hover:text-white"
                         : "text-ink-muted hover:bg-sage-pale hover:text-forest",

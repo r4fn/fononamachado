@@ -136,6 +136,7 @@ export default function LocalizacaoSection() {
   return (
     <section
       id="localizacao"
+      data-navbar-dark
       aria-labelledby="localizacao-titulo"
       className={cn(
         "relative overflow-hidden bg-[#8FAA8A] py-20 lg:py-28",
