@@ -60,14 +60,14 @@ function AreaCardView({
       className={cn(
         "rounded-2xl border border-forest/10 bg-white text-center shadow-card",
         "transition-all duration-200",
-        m ? "h-full min-h-[17.5rem] w-full px-5 py-6" : "h-full p-8",
+        m ? "w-full px-4 py-4" : "h-full p-8",
         "md:hover:-translate-y-1 md:hover:border-sage/50 md:hover:shadow-md",
       )}
     >
       <span
         className={cn(
           "mx-auto flex items-center justify-center rounded-2xl border border-forest/10 bg-sage-pale/60 text-forest",
-          m ? "mb-3 h-12 w-12" : "mb-4 h-14 w-14",
+          m ? "mb-2 h-9 w-9" : "mb-4 h-14 w-14",
         )}
         aria-hidden
       >
@@ -76,7 +76,7 @@ function AreaCardView({
       <h3
         className={cn(
           "font-serif font-normal text-forest",
-          m ? "mb-2 text-[1.12rem] leading-snug" : "mb-2 text-[1.3rem]",
+          m ? "mb-1 text-[0.95rem] leading-snug" : "mb-2 text-[1.3rem]",
         )}
       >
         {area.title}
@@ -84,7 +84,7 @@ function AreaCardView({
       <p
         className={cn(
           "text-pretty font-light text-ink-muted [overflow-wrap:anywhere]",
-          m ? "text-[0.8125rem] leading-[1.58]" : "text-[0.84rem] leading-[1.65]",
+          m ? "text-[0.76rem] leading-[1.55]" : "text-[0.84rem] leading-[1.65]",
         )}
       >
         {area.description}
