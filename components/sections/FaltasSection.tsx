@@ -52,45 +52,50 @@ const DocumentIcon = () => (
   </svg>
 );
 
+function FaltaRuleCard({ falta }: { falta: FaltaItem }) {
+  return (
+    <div
+      className={cn(
+        "flex gap-3 rounded-2xl border border-forest/10 bg-white/90 px-4 py-4 shadow-card",
+        "transition-all duration-200",
+        "md:hover:border-sage/35 md:hover:shadow-md",
+      )}
+    >
+      <span
+        className="flex h-10 min-w-[2.5rem] shrink-0 items-center justify-center rounded-lg bg-forest text-[0.75rem] font-semibold tabular-nums text-white"
+        aria-hidden
+      >
+        {falta.number}
+      </span>
+      <p className="min-w-0 text-[0.9rem] font-light leading-[1.7] text-ink-soft [overflow-wrap:anywhere]">
+        {falta.text}
+      </p>
+    </div>
+  );
+}
+
 export default function FaltasSection() {
   return (
     <section
       id="faltas"
       aria-labelledby="faltas-titulo"
-      className={cn("bg-cream-alt py-24 lg:py-28", siteEdgePadding)}
+      className={cn("bg-cream-alt py-20 lg:py-28", siteEdgePadding)}
     >
-      <SiteContainer className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
+      <SiteContainer className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
           <SectionLabel>Organização</SectionLabel>
           <h2
             id="faltas-titulo"
-            className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink"
+            className="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-light leading-[1.15] text-ink"
           >
             Faltas e <span className="text-forest italic">Reposições</span>
           </h2>
           <GoldRule />
-          <ul className="mt-8 list-none space-y-3" role="list">
+
+          <ul className="mt-6 list-none space-y-3 md:mt-8" role="list">
             {FALTAS.map((falta) => (
               <li key={falta.number} role="listitem">
-                <div
-                  className={cn(
-                    "flex gap-4 rounded-2xl border border-forest/10 bg-white/90 px-4 py-4 shadow-card",
-                    "transition-all duration-200 hover:border-sage/35 hover:shadow-md",
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "flex h-10 min-w-[2.5rem] shrink-0 items-center justify-center rounded-xl",
-                      "bg-forest text-[0.75rem] font-semibold tabular-nums text-white",
-                    )}
-                    aria-hidden
-                  >
-                    {falta.number}
-                  </span>
-                  <p className="text-[0.9rem] font-light leading-[1.7] text-ink-soft">
-                    {falta.text}
-                  </p>
-                </div>
+                <FaltaRuleCard falta={falta} />
               </li>
             ))}
           </ul>
@@ -98,7 +103,7 @@ export default function FaltasSection() {
 
         <aside
           className={cn(
-            "self-start rounded-2xl border border-forest/10 bg-white p-8 text-center shadow-card",
+            "rounded-2xl border border-forest/10 bg-white p-6 text-center shadow-card sm:p-8",
             "lg:sticky lg:top-[calc(72px+1.5rem)]",
           )}
           aria-labelledby="faltas-termos-titulo"
@@ -106,15 +111,14 @@ export default function FaltasSection() {
           <SectionLabel>Documentação</SectionLabel>
           <h3
             id="faltas-termos-titulo"
-            className="mb-3 font-serif text-[clamp(1.5rem,3vw,1.85rem)] font-light leading-tight text-ink"
+            className="mb-2 font-serif text-[clamp(1.35rem,3vw,1.85rem)] font-light leading-tight text-ink sm:mb-3"
           >
             Termos de <span className="text-forest italic">atendimento</span>
           </h3>
-          <GoldRule className="mx-auto my-5" />
-          <p className="mb-8 text-[0.9rem] font-light leading-[1.75] text-ink-muted">
-            Antes de iniciar o acompanhamento terapêutico, responsáveis ou
-            pacientes tomam ciência e concordam com os termos e condições do
-            atendimento fonoaudiológico.
+          <GoldRule className="mx-auto my-4 sm:my-5" />
+          <p className="mb-6 text-[0.86rem] font-light leading-[1.7] text-ink-muted sm:mb-8 sm:text-[0.9rem] sm:leading-[1.75]">
+            Antes de iniciar o acompanhamento, responsáveis ou pacientes tomam
+            ciência dos termos do atendimento fonoaudiológico.
           </p>
           <Button as="link" href="/termo" variant="forest" className="w-full sm:w-auto">
             <DocumentIcon />
