@@ -1,33 +1,33 @@
-import SectionLabel from '@/components/ui/SectionLabel'
-import GoldRule from '@/components/ui/GoldRule'
-import type { InfoCard } from '@/types'
+import SectionLabel from "@/components/ui/SectionLabel";
+import GoldRule from "@/components/ui/GoldRule";
+import type { InfoCard } from "@/types";
 
 const INFO_CARDS: InfoCard[] = [
   {
-    icon: '📅',
-    title: 'Atendimento Semanal',
+    icon: "📅",
+    title: "Atendimento Semanal",
     description:
-      'Preferencialmente semanal — a constância é essencial para o processo terapêutico. Você tem um horário exclusivo reservado na agenda.',
+      "Preferencialmente semanal — a constância é essencial para o processo terapêutico. Você tem um horário exclusivo reservado na agenda.",
   },
   {
-    icon: '📋',
-    title: 'Atendimento Quinzenal',
+    icon: "📋",
+    title: "Atendimento Quinzenal",
     description:
-      'Disponível em situações específicas, sem reserva de horário fixo. Pagamento por sessão individual.',
+      "Disponível em situações específicas, sem reserva de horário fixo. Pagamento por sessão individual.",
   },
   {
-    icon: '🏠',
-    title: 'Atendimento Domiciliar',
+    icon: "🏠",
+    title: "Atendimento Domiciliar",
     description:
-      'Disponível para disfagia e linguagem. Mesmo valor do consultório para disfagia (R$ 150). Acréscimo de deslocamento para outra cidade.',
+      "Disponível para disfagia e linguagem. Mesmo valor do consultório para disfagia (R$ 150). Acréscimo de deslocamento para outra cidade.",
   },
   {
-    icon: '⏱️',
-    title: 'Duração da Sessão',
+    icon: "⏱️",
+    title: "Duração da Sessão",
     description:
-      '45 minutos por sessão. O valor se aplica a todas as consultas: anamnese, avaliação e acompanhamento.',
+      "45 minutos por sessão. O valor se aplica a todas as consultas: anamnese, avaliação e acompanhamento.",
   },
-]
+];
 
 export default function SobreSection() {
   return (
@@ -43,22 +43,23 @@ export default function SobreSection() {
           id="sobre-titulo"
           className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink mb-6"
         >
-          Sobre{' '}
-          <span className="text-forest italic">Mim</span>
+          Sobre <span className="text-forest italic">Mim</span>
         </h2>
         <GoldRule />
         <p className="font-light leading-[1.9] text-ink-muted mb-4">
-          Sou Fonoaudióloga, formada pela Universidade de Sorocaba, e realizo atendimentos para
-          crianças e adultos em São Miguel Arcanjo e região.
+          Sou Fonoaudióloga, formada pela Universidade de Sorocaba, e realizo
+          atendimentos para crianças e adultos em São Miguel Arcanjo e região.
         </p>
         <p className="font-light leading-[1.9] text-ink-muted mb-4">
-          Meu trabalho é guiado pelo cuidado, pela escuta e pelo respeito, sempre buscando oferecer
-          um acompanhamento responsável e de qualidade de acordo com as necessidades de cada pessoa.
+          Meu trabalho é guiado pelo cuidado, pela escuta e pelo respeito,
+          sempre buscando oferecer um acompanhamento responsável e de qualidade
+          de acordo com as necessidades de cada pessoa.
         </p>
         <div className="border-l-[3px] border-sage bg-sage-pale px-6 py-5 rounded-r-xl mt-6">
           <p className="text-forest text-[0.92rem] leading-[1.75] font-normal">
-            O atendimento é individual, com duração de 45 minutos, baseado em avaliação detalhada e
-            plano terapêutico personalizado, respeitando as necessidades de cada paciente e família.
+            O atendimento é individual, com duração de 45 minutos, baseado em
+            avaliação detalhada e plano terapêutico personalizado, respeitando
+            as necessidades de cada paciente e família.
           </p>
         </div>
       </div>
@@ -80,5 +81,5 @@ export default function SobreSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }

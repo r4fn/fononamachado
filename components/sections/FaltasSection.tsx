@@ -1,34 +1,34 @@
-import Link from 'next/link'
-import SectionLabel from '@/components/ui/SectionLabel'
-import GoldRule from '@/components/ui/GoldRule'
-import type { FaltaItem } from '@/types'
+import Link from "next/link";
+import SectionLabel from "@/components/ui/SectionLabel";
+import GoldRule from "@/components/ui/GoldRule";
+import type { FaltaItem } from "@/types";
 
 const FALTAS: FaltaItem[] = [
   {
     number: 1,
-    text: 'Cancelamentos com mínimo 12h de antecedência não são cobrados.',
+    text: "Cancelamentos com mínimo 12h de antecedência não são cobrados.",
   },
   {
     number: 2,
-    text: 'Cancelamentos fora desse prazo são cobrados normalmente.',
+    text: "Cancelamentos fora desse prazo são cobrados normalmente.",
   },
   {
     number: 3,
-    text: 'Faltas sem aviso não geram reposição e o tempo perdido por atraso não é compensado.',
+    text: "Faltas sem aviso não geram reposição e o tempo perdido por atraso não é compensado.",
   },
   {
     number: 4,
-    text: 'Reposições em até 30 dias; sem horário disponível, o valor vira crédito para o mês seguinte.',
+    text: "Reposições em até 30 dias; sem horário disponível, o valor vira crédito para o mês seguinte.",
   },
   {
     number: 5,
-    text: 'Ausência prolongada: pausa de até 30 dias mantendo a vaga, com aviso de 30 dias. Disponível 1x por ano.',
+    text: "Ausência prolongada: pausa de até 30 dias mantendo a vaga, com aviso de 30 dias. Disponível 1x por ano.",
   },
   {
     number: 6,
-    text: 'A partir de 2 faltas consecutivas sem aviso, o paciente poderá perder sua vaga e horário preferencial.',
+    text: "A partir de 2 faltas consecutivas sem aviso, o paciente poderá perder sua vaga e horário preferencial.",
   },
-]
+];
 
 const DocumentIcon = () => (
   <svg
@@ -47,7 +47,7 @@ const DocumentIcon = () => (
     <line x1="16" y1="13" x2="8" y2="13" />
     <line x1="16" y1="17" x2="8" y2="17" />
   </svg>
-)
+);
 
 export default function FaltasSection() {
   return (
@@ -63,8 +63,7 @@ export default function FaltasSection() {
           id="faltas-titulo"
           className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink"
         >
-          Faltas e{' '}
-          <span className="text-forest italic">Reposições</span>
+          Faltas e <span className="text-forest italic">Reposições</span>
         </h2>
         <GoldRule />
         <ul className="list-none mt-7 space-y-0">
@@ -86,12 +85,12 @@ export default function FaltasSection() {
       <div className="bg-white border border-forest/10 rounded-[20px] p-9 text-center shadow-card self-start">
         <SectionLabel>Documentação</SectionLabel>
         <h3 className="font-serif text-[1.8rem] font-light leading-[1.15] text-ink mb-4">
-          Termos de{' '}
-          <span className="text-forest italic">Atendimento</span>
+          Termos de <span className="text-forest italic">Atendimento</span>
         </h3>
         <p className="text-[0.9rem] font-light leading-[1.75] text-ink-muted mb-6">
-          Antes de iniciar o acompanhamento terapêutico, os responsáveis ou pacientes tomam ciência
-          e concordam com os termos e condições do atendimento fonoaudiológico.
+          Antes de iniciar o acompanhamento terapêutico, os responsáveis ou
+          pacientes tomam ciência e concordam com os termos e condições do
+          atendimento fonoaudiológico.
         </p>
         <Link
           href="/termo"
@@ -104,5 +103,5 @@ export default function FaltasSection() {
         </Link>
       </div>
     </section>
-  )
+  );
 }

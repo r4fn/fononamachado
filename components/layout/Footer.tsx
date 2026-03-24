@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { INSTAGRAM_URL } from '@/lib/constants'
+import Image from "next/image";
+import Link from "next/link";
+import { INSTAGRAM_URL } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -37,5 +37,5 @@ export default function Footer() {
         </Link>
       </div>
     </footer>
-  )
+  );
 }

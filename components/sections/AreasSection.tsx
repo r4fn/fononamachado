@@ -1,44 +1,44 @@
-import SectionLabel from '@/components/ui/SectionLabel'
-import type { AreaCard } from '@/types'
+import SectionLabel from "@/components/ui/SectionLabel";
+import type { AreaCard } from "@/types";
 
 const AREAS: AreaCard[] = [
   {
-    icon: '💬',
-    title: 'Linguagem Infantil',
+    icon: "💬",
+    title: "Linguagem Infantil",
     description:
-      'Avaliação e intervenção no desenvolvimento da linguagem em crianças, trabalhando comunicação, fala e compreensão.',
+      "Avaliação e intervenção no desenvolvimento da linguagem em crianças, trabalhando comunicação, fala e compreensão.",
   },
   {
-    icon: '🗣️',
-    title: 'Linguagem Adulto',
+    icon: "🗣️",
+    title: "Linguagem Adulto",
     description:
-      'Acompanhamento terapêutico para adultos com alterações de linguagem, voz ou comunicação em geral.',
+      "Acompanhamento terapêutico para adultos com alterações de linguagem, voz ou comunicação em geral.",
   },
   {
-    icon: '👄',
-    title: 'Motricidade Orofacial',
+    icon: "👄",
+    title: "Motricidade Orofacial",
     description:
-      'Avaliação e tratamento de alterações nos músculos da face, boca, mastigação, deglutição e respiração.',
+      "Avaliação e tratamento de alterações nos músculos da face, boca, mastigação, deglutição e respiração.",
   },
   {
-    icon: '🍽️',
-    title: 'Disfagia Adulto',
+    icon: "🍽️",
+    title: "Disfagia Adulto",
     description:
-      'Reabilitação da deglutição em adultos, com atendimento domiciliar disponível para casos que exigem.',
+      "Reabilitação da deglutição em adultos, com atendimento domiciliar disponível para casos que exigem.",
   },
   {
-    icon: '📊',
-    title: 'Avaliação Detalhada',
+    icon: "📊",
+    title: "Avaliação Detalhada",
     description:
-      'Processo avaliativo completo com elaboração de plano terapêutico individualizado para cada paciente.',
+      "Processo avaliativo completo com elaboração de plano terapêutico individualizado para cada paciente.",
   },
   {
-    icon: '👨‍👩‍👧',
-    title: 'Orientação Familiar',
+    icon: "👨‍👩‍👧",
+    title: "Orientação Familiar",
     description:
-      'Suporte e orientação para famílias, integrando o núcleo familiar no processo terapêutico da criança.',
+      "Suporte e orientação para famílias, integrando o núcleo familiar no processo terapêutico da criança.",
   },
-]
+];
 
 export default function AreasSection() {
   return (
@@ -52,8 +52,7 @@ export default function AreasSection() {
         id="areas-titulo"
         className="font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-light leading-[1.15] text-ink"
       >
-        Áreas de{' '}
-        <span className="text-forest italic">Atuação</span>
+        Áreas de <span className="text-forest italic">Atuação</span>
       </h2>
 
       <div
@@ -79,5 +78,5 @@ export default function AreasSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }
