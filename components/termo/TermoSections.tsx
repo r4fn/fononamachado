@@ -316,6 +316,18 @@ export default function TermoSections() {
 
       <TermoSpacer />
 
+      <TermoSection number="16" title="Proteção de dados pessoais">
+        <p>
+          Os dados pessoais do paciente e/ou responsável serão utilizados
+          exclusivamente para fins de cadastro, contato, emissão de documentos
+          fiscais e condução do atendimento, sendo armazenados de forma segura e
+          sigilosa, em conformidade com a{" "}
+          <strong>LGPD (Lei nº 13.709/2018)</strong>.
+        </p>
+      </TermoSection>
+
+      <TermoSpacer />
+
       <aside
         className="relative mt-14 overflow-hidden rounded-md bg-forest px-6 py-9 text-center shadow-md sm:px-10 sm:py-10"
         aria-labelledby="termo-aceite-titulo"
@@ -327,7 +339,7 @@ export default function TermoSections() {
           id="termo-aceite-titulo"
           className="mt-4 font-serif text-[clamp(1.2rem,3.5vw,1.375rem)] font-normal uppercase tracking-[0.12em] text-white"
         >
-          16. Aceite dos Termos
+          17. Aceite dos Termos
         </h2>
         <p className="mx-auto mt-4 max-w-[560px] text-[0.875rem] leading-[1.9] text-white/70">
           O responsável declara ter tido acesso prévio a estes termos antes do
