@@ -5,6 +5,7 @@ import {
   INSTAGRAM_URL,
   INSTAGRAM_HANDLE,
 } from "@/lib/constants";
+import { siteEdgePadding, siteMaxWidthInner } from "@/lib/siteLayout";
 import { cn } from "@/lib/utils";
 
 const WhatsAppIcon = () => (
@@ -79,66 +80,77 @@ export default function HeroSection() {
       aria-label="Apresentação"
       className={cn(
         "relative flex min-h-[calc(100dvh-72px)] items-center bg-cream-warm",
-        "mt-[72px] px-6 sm:px-10 lg:px-14",
+        "mt-[72px]",
+        siteEdgePadding,
       )}
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 py-14 md:grid-cols-2 md:gap-16 lg:gap-20 lg:py-20">
-        {/* Coluna texto — alinhada à esquerda, conteúdo verticalmente centrado */}
-        <div className="order-2 flex flex-col justify-center md:order-1">
-          <HeroBadge>Fonoaudióloga · CRFa 2-23700</HeroBadge>
+      <div
+        className={cn(
+          siteMaxWidthInner,
+          "grid grid-cols-1 items-center gap-12 py-14 md:grid-cols-2 md:gap-12 lg:gap-16 lg:py-20",
+        )}
+      >
+        {/*
+          Coluna texto: em md+, ml-auto empurra o bloco para a direita da célula,
+          aproximando do centro da tela (mais “no meio” entre borda e foto).
+        */}
+        <div className="order-2 flex w-full flex-col justify-center md:order-1">
+          <div className="mx-auto w-full max-w-[28rem] md:mx-0 md:ml-auto md:mr-0 lg:max-w-[30rem] lg:pr-4">
+            <HeroBadge>Fonoaudióloga · CRFa 2-23700</HeroBadge>
 
-          <h1
-            className={cn(
-              "animate-fade-up animation-delay-200 mt-8 font-serif text-[clamp(2.75rem,6vw,4.25rem)] font-light leading-[1.02] tracking-tight text-ink",
-            )}
-          >
-            Nathália
-            <br />
-            <em className="not-italic text-forest">Machado</em>
-          </h1>
-
-          <p
-            className={cn(
-              "animate-fade-up animation-delay-300 mt-8 max-w-[28rem] text-[1.05rem] font-light leading-[1.82] text-ink-soft/90",
-            )}
-          >
-            Atendimento humanizado em Linguagem Adulto e Infantil, Motricidade
-            Orofacial e Disfagia, guiado pelo cuidado, escuta e respeito às
-            necessidades de cada pessoa.
-          </p>
-
-          <p className="animate-fade-up animation-delay-400 mt-5 text-sm font-normal tracking-wide text-ink-muted/85">
-            São Miguel Arcanjo — SP
-          </p>
-
-          <div className="animate-fade-up animation-delay-500 mt-10 flex flex-wrap gap-3">
-            <Button
-              as="link"
-              variant="primary"
-              href={WHATSAPP_AGENDAMENTO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Agendar pelo WhatsApp"
-              className="rounded-xl px-7 py-3.5 shadow-md shadow-emerald-600/20"
-            >
-              <WhatsAppIcon />
-              WhatsApp
-            </Button>
-
-            <Button
-              as="link"
-              variant="secondary"
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <h1
               className={cn(
-                "rounded-xl border-stone-300/90 bg-white px-7 py-3.5 text-ink-soft",
-                "shadow-sm hover:border-stone-400 hover:bg-stone-50/90",
+                "animate-fade-up animation-delay-200 mt-8 font-serif text-[clamp(2.75rem,6vw,4.25rem)] font-light leading-[1.02] tracking-tight text-ink",
               )}
             >
-              <InstagramIcon />
-              {INSTAGRAM_HANDLE}
-            </Button>
+              Nathália
+              <br />
+              <em className="not-italic text-forest">Machado</em>
+            </h1>
+
+            <p
+              className={cn(
+                "animate-fade-up animation-delay-300 mt-8 text-[1.05rem] font-light leading-[1.82] text-ink-soft/90",
+              )}
+            >
+              Atendimento humanizado em Linguagem Adulto e Infantil, Motricidade
+              Orofacial e Disfagia, guiado pelo cuidado, escuta e respeito às
+              necessidades de cada pessoa.
+            </p>
+
+            <p className="animate-fade-up animation-delay-400 mt-5 text-sm font-normal tracking-wide text-ink-muted/85">
+              São Miguel Arcanjo — SP
+            </p>
+
+            <div className="animate-fade-up animation-delay-500 mt-10 flex flex-wrap gap-3">
+              <Button
+                as="link"
+                variant="primary"
+                href={WHATSAPP_AGENDAMENTO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Agendar pelo WhatsApp"
+                className="rounded-xl px-7 py-3.5 shadow-md shadow-emerald-600/20"
+              >
+                <WhatsAppIcon />
+                WhatsApp
+              </Button>
+
+              <Button
+                as="link"
+                variant="secondary"
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "rounded-xl border-stone-300/90 bg-white px-7 py-3.5 text-ink-soft",
+                  "shadow-sm hover:border-stone-400 hover:bg-stone-50/90",
+                )}
+              >
+                <InstagramIcon />
+                {INSTAGRAM_HANDLE}
+              </Button>
+            </div>
           </div>
         </div>
 

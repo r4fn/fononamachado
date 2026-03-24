@@ -1,3 +1,6 @@
+import SiteContainer from "@/components/layout/SiteContainer";
+import { siteEdgePadding } from "@/lib/siteLayout";
+
 interface ValorItem {
   label: string;
   price: string;
@@ -24,8 +27,9 @@ const VALORES: ValorItem[] = [
 
 export default function ValoresCard() {
   return (
-    <div className="-translate-y-7 max-w-3xl mx-auto px-5">
-      <div className="bg-white rounded-xl shadow-md border-t-[3px] border-honey px-8 py-7">
+    <div className={`-translate-y-7 ${siteEdgePadding}`}>
+      <SiteContainer className="max-w-3xl">
+        <div className="rounded-xl border-t-[3px] border-honey bg-white px-8 py-7 shadow-md">
         <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-cream-alt">
           {VALORES.map((v) => (
             <div
@@ -50,7 +54,8 @@ export default function ValoresCard() {
           anamnese, avaliação e sessões terapêuticas. Para deslocamento a sítio
           ou outra cidade, entre em contato para combinar o valor adicional.
         </p>
-      </div>
+        </div>
+      </SiteContainer>
     </div>
   );
 }

@@ -1,4 +1,6 @@
+import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { siteEdgePadding } from "@/lib/siteLayout";
 import type { PlanoCard } from "@/types";
 
 const PLANOS: PlanoCard[] = [
@@ -45,8 +47,9 @@ export default function PlanosSection() {
     <section
       id="planos"
       aria-labelledby="planos-titulo"
-      className="bg-white text-center px-[8%] py-24"
+      className={`bg-white py-24 text-center ${siteEdgePadding}`}
     >
+      <SiteContainer>
       <SectionLabel>Investimento</SectionLabel>
       <h2
         id="planos-titulo"
@@ -56,7 +59,7 @@ export default function PlanosSection() {
       </h2>
 
       <div
-        className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-12 items-start"
+        className="mt-12 grid grid-cols-1 items-start gap-5 lg:grid-cols-3"
         role="list"
       >
         {PLANOS.map((plano) => (
@@ -141,13 +144,16 @@ export default function PlanosSection() {
         ))}
       </div>
 
-      <p className="mt-11 inline-flex items-center gap-3 bg-cream-alt border border-forest/10 rounded-pill px-7 py-4 text-[0.88rem] text-ink-muted font-light">
-        <span aria-hidden="true">💳</span>
-        Formas de pagamento:{" "}
-        <strong className="text-ink-soft font-medium ml-1">
-          Pix · Dinheiro · Cartão
-        </strong>
-      </p>
+      <div className="mt-11 flex justify-center">
+        <p className="inline-flex items-center gap-3 rounded-pill border border-forest/10 bg-cream-alt px-7 py-4 text-[0.88rem] font-light text-ink-muted">
+          <span aria-hidden="true">💳</span>
+          Formas de pagamento:{" "}
+          <strong className="ml-1 font-medium text-ink-soft">
+            Pix · Dinheiro · Cartão
+          </strong>
+        </p>
+      </div>
+      </SiteContainer>
     </section>
   );
 }

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GoldRule from "@/components/ui/GoldRule";
+import { siteEdgePadding } from "@/lib/siteLayout";
 import type { FaltaItem } from "@/types";
 
 const FALTAS: FaltaItem[] = [
@@ -54,8 +56,9 @@ export default function FaltasSection() {
     <section
       id="faltas"
       aria-labelledby="faltas-titulo"
-      className="bg-cream-alt grid grid-cols-1 lg:grid-cols-2 gap-20 px-[8%] py-24"
+      className={`bg-cream-alt py-24 ${siteEdgePadding}`}
     >
+      <SiteContainer className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
       {/* Policy list */}
       <div>
         <SectionLabel>Organização</SectionLabel>
@@ -102,6 +105,7 @@ export default function FaltasSection() {
           Ler Termos de Atendimento
         </Link>
       </div>
+      </SiteContainer>
     </section>
   );
 }

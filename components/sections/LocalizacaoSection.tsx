@@ -1,6 +1,8 @@
+import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GoldRule from "@/components/ui/GoldRule";
 import Button from "@/components/ui/Button";
+import { siteEdgePadding } from "@/lib/siteLayout";
 import type { ContatoItem } from "@/types";
 import {
   WHATSAPP_AGENDAMENTO_URL,
@@ -44,11 +46,11 @@ export default function LocalizacaoSection() {
     <section
       id="localizacao"
       aria-labelledby="localizacao-titulo"
-      className="bg-forest p-0"
+      className={`bg-forest py-20 lg:py-24 ${siteEdgePadding}`}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <SiteContainer className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Info */}
-        <div className="px-[8%] py-20 flex flex-col justify-center">
+        <div className="flex flex-col justify-center">
           <SectionLabel light>Onde estou</SectionLabel>
           <h2
             id="localizacao-titulo"
@@ -99,17 +101,17 @@ export default function LocalizacaoSection() {
         </div>
 
         {/* Map */}
-        <div className="relative min-h-[300px] lg:min-h-[450px]">
+        <div className="relative min-h-[280px] overflow-hidden rounded-2xl ring-1 ring-white/10 sm:min-h-[320px] lg:min-h-[420px]">
           <iframe
             title="Localização Nathália Machado Fonoaudióloga"
             src={MAPS_EMBED_SRC}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 w-full h-full border-0 [filter:saturate(0.75)_contrast(1.05)]"
+            className="absolute inset-0 h-full w-full border-0 [filter:saturate(0.75)_contrast(1.05)]"
           />
         </div>
-      </div>
+      </SiteContainer>
     </section>
   );
 }

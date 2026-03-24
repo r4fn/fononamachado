@@ -1,4 +1,6 @@
+import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { siteEdgePadding } from "@/lib/siteLayout";
 import type { AreaCard } from "@/types";
 
 const AREAS: AreaCard[] = [
@@ -45,8 +47,9 @@ export default function AreasSection() {
     <section
       id="areas"
       aria-labelledby="areas-titulo"
-      className="bg-cream-alt text-center px-[8%] py-24"
+      className={`bg-cream-alt py-24 text-center ${siteEdgePadding}`}
     >
+      <SiteContainer>
       <SectionLabel>Especialidades</SectionLabel>
       <h2
         id="areas-titulo"
@@ -56,7 +59,7 @@ export default function AreasSection() {
       </h2>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[18px] mt-12"
+        className="mt-12 grid grid-cols-1 gap-[18px] sm:grid-cols-2 lg:grid-cols-3"
         role="list"
       >
         {AREAS.map((area) => (
@@ -77,6 +80,7 @@ export default function AreasSection() {
           </article>
         ))}
       </div>
+      </SiteContainer>
     </section>
   );
 }

@@ -1,5 +1,7 @@
+import SiteContainer from "@/components/layout/SiteContainer";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GoldRule from "@/components/ui/GoldRule";
+import { siteEdgePadding } from "@/lib/siteLayout";
 import type { InfoCard } from "@/types";
 
 const INFO_CARDS: InfoCard[] = [
@@ -34,8 +36,9 @@ export default function SobreSection() {
     <section
       id="sobre"
       aria-labelledby="sobre-titulo"
-      className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-20 px-[8%] py-24"
+      className={`bg-white py-24 ${siteEdgePadding}`}
     >
+      <SiteContainer className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
       {/* Text */}
       <div>
         <SectionLabel>Quem sou eu</SectionLabel>
@@ -80,6 +83,7 @@ export default function SobreSection() {
           </article>
         ))}
       </div>
+      </SiteContainer>
     </section>
   );
 }

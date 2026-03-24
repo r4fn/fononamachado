@@ -45,21 +45,36 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[72px]",
+        "fixed top-0 left-0 right-0 z-50 h-[72px]",
         "bg-cream/92 backdrop-blur-xl border-b border-forest/10 transition-all duration-300",
         scrolled && "shadow-[0_4px_24px_rgba(0,0,0,0.08)]",
       )}
       aria-label="Navegação principal"
     >
-      <Logo
-        height={72}
-        priority
-        alt="Logo Nathália Machado Fonoaudióloga"
-        className="flex-shrink-0"
-      />
+      {/*
+        Mesmo grid / padding da HeroSection (max-w-6xl + px-6 sm:px-10 lg:px-14).
+        Logo dentro da mesma caixa do texto (max-w-[28rem] md:ml-auto lg:pr-4)
+        para alinhar a borda esquerda com o título e o parágrafo.
+      */}
+      <div
+        className={cn(
+          "mx-auto flex h-full max-w-6xl items-center justify-between gap-4",
+          "px-6 sm:px-10 lg:px-14",
+          "md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-16",
+        )}
+      >
+        <div className="flex min-w-0 flex-1 items-center md:contents">
+          <div className="mx-auto w-full max-w-[28rem] md:col-start-1 md:mx-0 md:ml-auto md:mr-0 lg:max-w-[30rem] lg:pr-4">
+            <Logo
+              height={54}
+              priority
+              alt="Logo Nathália Machado Fonoaudióloga"
+            />
+          </div>
+        </div>
 
-      {/* Desktop links */}
-      <ul className="hidden md:flex items-center gap-1 list-none">
+        {/* Desktop links */}
+        <ul className="hidden list-none items-center justify-end gap-1 md:col-start-2 md:flex">
         {NAV_LINKS.map((link) => (
           <li key={link.label}>
             <Link
@@ -77,43 +92,44 @@ export default function Navbar() {
             </Link>
           </li>
         ))}
-      </ul>
+        </ul>
 
-      {/* Hamburger */}
-      <button
-        className="flex md:hidden flex-col gap-[5px] p-2.5 z-[200] relative"
-        onClick={toggleMenu}
-        aria-label="Menu"
-        aria-expanded={menuOpen}
-      >
-        <span
-          className={cn(
-            "block w-6 h-0.5 bg-ink rounded-sm transition-transform duration-300",
-            menuOpen && "translate-y-[7px] rotate-45",
-          )}
-        />
-        <span
-          className={cn(
-            "block w-6 h-0.5 bg-ink rounded-sm transition-opacity duration-300",
-            menuOpen && "opacity-0",
-          )}
-        />
-        <span
-          className={cn(
-            "block w-6 h-0.5 bg-ink rounded-sm transition-transform duration-300",
-            menuOpen && "-translate-y-[7px] -rotate-45",
-          )}
-        />
-      </button>
+        {/* Hamburger */}
+        <button
+          className="relative z-[200] flex shrink-0 flex-col gap-[5px] p-2.5 md:hidden"
+          onClick={toggleMenu}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
+          <span
+            className={cn(
+              "block h-0.5 w-6 rounded-sm bg-ink transition-transform duration-300",
+              menuOpen && "translate-y-[7px] rotate-45",
+            )}
+          />
+          <span
+            className={cn(
+              "block h-0.5 w-6 rounded-sm bg-ink transition-opacity duration-300",
+              menuOpen && "opacity-0",
+            )}
+          />
+          <span
+            className={cn(
+              "block h-0.5 w-6 rounded-sm bg-ink transition-transform duration-300",
+              menuOpen && "-translate-y-[7px] -rotate-45",
+            )}
+          />
+        </button>
+      </div>
 
-      {/* Mobile overlay menu */}
+      {/* Mobile overlay — fora do max-w-6xl para cobrir a viewport inteira */}
       <ul
         className={cn(
-          "fixed inset-0 bg-cream flex flex-col items-center justify-center gap-2 list-none z-[150]",
+          "fixed inset-0 z-[150] flex list-none flex-col items-center justify-center gap-2 bg-cream",
           "transition-all duration-300",
           menuOpen
-            ? "opacity-100 visible pointer-events-auto"
-            : "opacity-0 invisible pointer-events-none",
+            ? "visible pointer-events-auto opacity-100"
+            : "invisible pointer-events-none opacity-0",
         )}
       >
         {NAV_LINKS.map((link) => (
@@ -124,10 +140,10 @@ export default function Navbar() {
               rel={link.isExternal ? "noopener noreferrer" : undefined}
               onClick={closeMenu}
               className={cn(
-                "block text-[1.1rem] font-medium tracking-wide px-6 py-3 rounded-pill transition-all duration-200",
+                "block rounded-pill px-6 py-3 text-[1.1rem] font-medium tracking-wide transition-all duration-200",
                 link.isCta
-                  ? "bg-forest text-white hover:bg-forest-light mt-2"
-                  : "text-ink hover:text-forest hover:bg-sage-pale",
+                  ? "mt-2 bg-forest text-white hover:bg-forest-light"
+                  : "text-ink hover:bg-sage-pale hover:text-forest",
               )}
             >
               {link.label}

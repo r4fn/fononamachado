@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteContainer from "@/components/layout/SiteContainer";
 import Logo from "@/components/ui/Logo";
 import { WHATSAPP_URL, EMAIL, INSTAGRAM_URL, ADDRESS } from "@/lib/constants";
+import { siteEdgePadding } from "@/lib/siteLayout";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Termos de Atendimento — Nathália Machado Fonoaudióloga",
@@ -70,7 +73,7 @@ export default function TermoPage() {
   return (
     <>
       {/* Header */}
-      <div className="bg-forest px-10 pt-5 pb-5 text-center">
+      <div className={cn("bg-forest pb-5 pt-5 text-center", siteEdgePadding)}>
         <div className="mb-7 flex justify-center">
           <Logo height={80} linked={false} />
         </div>
@@ -87,7 +90,12 @@ export default function TermoPage() {
       </div>
 
       {/* Doc title */}
-      <div className="bg-cream-alt border-t-[3px] border-honey border-b px-10 py-7 text-center">
+      <div
+        className={cn(
+          "border-b border-t-[3px] border-honey bg-cream-alt py-7 text-center",
+          siteEdgePadding,
+        )}
+      >
         <h2 className="font-serif text-[clamp(20px,4vw,30px)] font-medium tracking-[0.14em] uppercase text-ink">
           Termos de Atendimento Fonoaudiológico
         </h2>
@@ -97,7 +105,8 @@ export default function TermoPage() {
       </div>
 
       {/* Content */}
-      <main className="max-w-[860px] mx-auto px-8 py-16">
+      <main className={cn("py-16", siteEdgePadding)}>
+        <div className="mx-auto max-w-[860px]">
         <TermoSection number="01" title="Sobre os Atendimentos">
           <p>
             Os atendimentos são realizados pela fonoaudióloga{" "}
@@ -447,10 +456,14 @@ export default function TermoPage() {
           </p>
           <div className="h-px w-24 bg-sage-light mx-auto mt-6" />
         </div>
+        </div>
       </main>
 
       {/* Footer do termo */}
-      <footer className="bg-forest px-[8%] py-10 text-center text-white/70">
+      <footer
+        className={cn("bg-forest py-10 text-center text-white/70", siteEdgePadding)}
+      >
+        <SiteContainer>
         <p className="font-serif text-lg font-normal text-white mb-1">
           Nathália Machado Vieira de Oliveira
         </p>
@@ -490,11 +503,12 @@ export default function TermoPage() {
         <div className="mt-6">
           <Link
             href="/"
-            className="text-[0.74rem] tracking-wide text-white/50 hover:text-white/80 transition-colors border-b border-white/20"
+            className="border-b border-white/20 text-[0.74rem] tracking-wide text-white/50 transition-colors hover:text-white/80"
           >
             ← Voltar ao site
           </Link>
         </div>
+        </SiteContainer>
       </footer>
     </>
   );
